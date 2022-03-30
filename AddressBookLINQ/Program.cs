@@ -12,7 +12,8 @@ namespace AddressBookLINQ
         {
             Console.WriteLine("-------------------------------------Welcome To Address Book Linq------------------------------------");
             AddressBookTable table = new AddressBookTable();
-            table.AddToDataTable();
+            table.AddContacts();
+            table.Display();
             Console.ReadKey();
            
         }
