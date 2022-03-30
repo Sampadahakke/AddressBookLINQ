@@ -11,7 +11,10 @@ namespace AddressBookLINQ
         static void Main(string[] args)
         {
             Console.WriteLine("-------------------------------------Welcome To Address Book Linq------------------------------------");
-            Console.ReadLine();
+            AddressBookTable table = new AddressBookTable();
+            table.AddToDataTable();
+            Console.ReadKey();
+           
         }
     }
 }
