@@ -38,6 +38,7 @@ namespace AddressBookLINQ
             dtRow["Email"] = contact.Email;
             table.Rows.Add(dtRow);
         }
+        //Creating method to add the contact details
         public void AddContacts()
         {
             AddToDataTable();
@@ -61,9 +62,10 @@ namespace AddressBookLINQ
             contact.State = "TN";
             contact.zip = 123001;
             InsertintoDataTable(contact);
-            
+            Display();
         }
 
+        //Creating method to edit the existing contact
         public void EditContact(string FirstName,string ColumnName  )
         {
             AddContacts();
@@ -78,6 +80,22 @@ namespace AddressBookLINQ
                 Console.WriteLine("No such record is available....");
             }
         }
+        //Creating  method to delete the contacts 
+        public void DeleteContact(string FirstName)
+        {
+            AddContacts();
+            var recordData = (from data in table.AsEnumerable() where data.Field<string>("FirstName") == FirstName select data).FirstOrDefault();
+            if(recordData != null)
+            {
+                table.Rows.Remove(recordData);
+                Display();
+            }
+            else
+            {
+                Console.WriteLine("No such record is available");
+            }
+        }
+        //Creating method to to display the contacts
         public void Display()
         {
            
