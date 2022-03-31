@@ -48,7 +48,7 @@ namespace AddressBookLINQ
             contact.PhoneNumber = 9842905050;
             contact.Email   = "shalini@gmail.com";
             contact.Address = "4,B Block,Avadi";
-            contact.City = "Pune";
+            contact.City = "chennai";
             contact.State = "TN";
             contact.zip = 600072;
             InsertintoDataTable(contact);
@@ -114,6 +114,17 @@ namespace AddressBookLINQ
             var recordData = (from data in table.AsEnumerable() where data.Field<string>("City") == City || data.Field<string>("State") == State select data).Count();
             Console.WriteLine("Total count = " +recordData);
 
+        }
+
+        //Creating method to sort names alphabetically
+        public void SortAlphabetically(string City)
+        {
+            AddContacts();
+            var recordData =from data in table.AsEnumerable()  orderby data.Field<string>("FirstName") descending where data.Field<string>("City") == City  select data);
+            foreach(var dtRows in recordData)
+            {
+                Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7}\n", dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
+            }
         }
 
         //Creating method to to display the contacts

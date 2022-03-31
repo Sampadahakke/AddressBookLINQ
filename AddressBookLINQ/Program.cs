@@ -16,8 +16,9 @@ namespace AddressBookLINQ
             //table.Display();
             //table.EditContact("Shalini", "FirstName");
             //table.DeleteContact("Sampada");
-            table.GetCount("Channai","TN");
+            //table.GetCount("Channai","TN");
             //table.RetrieveData("Channai", "TN");
+            table.SortAlphabetically("Channai");
             Console.ReadKey(); 
            
         }
