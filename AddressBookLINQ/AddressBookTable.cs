@@ -48,7 +48,7 @@ namespace AddressBookLINQ
             contact.PhoneNumber = 9842905050;
             contact.Email   = "shalini@gmail.com";
             contact.Address = "4,B Block,Avadi";
-            contact.City = "chennai";
+            contact.City = "Pune";
             contact.State = "TN";
             contact.zip = 600072;
             InsertintoDataTable(contact);
@@ -59,10 +59,9 @@ namespace AddressBookLINQ
             contact.Email = "raksha@gmail.com";
             contact.Address = "Sasthri street,ambattur";
             contact.City = "chennai";
-            contact.State = "TN";
+            contact.State = "MH";
             contact.zip = 123001;
             InsertintoDataTable(contact);
-            Display();
         }
 
         //Creating method to edit the existing contact
@@ -95,6 +94,19 @@ namespace AddressBookLINQ
                 Console.WriteLine("No such record is available");
             }
         }
+
+        //Creating method to retrive the data 
+        public void RetrieveData(string City,string State)
+        {
+            AddContacts();
+            var recordData =from data in table.AsEnumerable() where data.Field<string>("City") == City || data.Field<string>("State") == State select data;
+            foreach(DataRow dtRows in recordData)
+            {
+                
+                Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7}\n", dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
+            }
+        }
+
         //Creating method to to display the contacts
         public void Display()
         {
