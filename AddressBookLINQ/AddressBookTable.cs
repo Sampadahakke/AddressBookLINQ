@@ -87,7 +87,7 @@ namespace AddressBookLINQ
             if(recordData != null)
             {
                 table.Rows.Remove(recordData);
-                Display();
+                Console.WriteLine("Successfully Deleted..");
             }
             else
             {
@@ -105,6 +105,15 @@ namespace AddressBookLINQ
                 
                 Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7}\n", dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
             }
+        }
+
+        //Creating method to get count by city or state
+        public void GetCount(String City, string State)
+        {
+            AddContacts();
+            var recordData = (from data in table.AsEnumerable() where data.Field<string>("City") == City || data.Field<string>("State") == State select data).Count();
+            Console.WriteLine("Total count = " +recordData);
+
         }
 
         //Creating method to to display the contacts

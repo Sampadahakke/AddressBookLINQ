@@ -14,9 +14,10 @@ namespace AddressBookLINQ
             AddressBookTable table = new AddressBookTable();
             //table.AddContacts();
             //table.Display();
-            //table.EditContact("Raksha", "FirstName");
+            //table.EditContact("Shalini", "FirstName");
             //table.DeleteContact("Sampada");
-            table.RetrieveData("Channai", "TN");
+            table.GetCount("Channai","TN");
+            //table.RetrieveData("Channai", "TN");
             Console.ReadKey(); 
            
         }
