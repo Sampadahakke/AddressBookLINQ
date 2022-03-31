@@ -12,9 +12,10 @@ namespace AddressBookLINQ
         {
             Console.WriteLine("-------------------------------------Welcome To Address Book Linq------------------------------------");
             AddressBookTable table = new AddressBookTable();
-            table.AddContacts();
-            table.Display();
-            Console.ReadKey();
+            //table.AddContacts();
+            //table.Display();
+            table.EditContact("Raksha", "FirstName");
+            Console.ReadKey(); 
            
         }
     }
